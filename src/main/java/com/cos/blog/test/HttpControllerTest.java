@@ -9,9 +9,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HttpControllerTest {
 
+    private static final String TAG = "HttpControllerTest : ";
+
+    @GetMapping("/http/lombok")
+    public String lombokTest(){
+        Member m = Member.builder().username("ssar").build();
+        Member m1 = new Member(1, "1234", "ssar", "ssar@nave");
+        System.out.println(TAG + "getter"+m.getId());
+        m.setId(5000);
+        System.out.println(TAG + "setter"+m.getId());
+        return "lombok test 완료";
+    }
+
     //http://localhost:9090/http/get
     @GetMapping("/http/get")
     public String getTest(Member m){ //http://localhost:9090/http/get?id=1&username=hi&password=1234&email=hi@gmail
+        
         return "get 요청 : "+m.getId()+","+ m.getUsername()+ ","+ m.getPassword()+ ","+m.getEmail();
     }
     //http://localhost:9090/http/post
