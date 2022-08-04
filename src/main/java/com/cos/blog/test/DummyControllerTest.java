@@ -93,10 +93,10 @@ public class DummyControllerTest {
         });
         */
 
-        User user = userRepository.findById(id).orElseThrow(new Supplier<IllegalStateException>() {
+        User user = userRepository.findById(id).orElseThrow(new Supplier<IllegalArgumentException>() {
             @Override
-            public IllegalStateException get() {
-                return new IllegalStateException("해당 유저는 없습니다. id : " + id);
+            public IllegalArgumentException get() {
+                return new IllegalArgumentException("해당 유저는 없습니다. id : " + id);
             }
         });
         // 요청 : 웹 브라우저 -> 자바스크립트나 html 정도 이해함
