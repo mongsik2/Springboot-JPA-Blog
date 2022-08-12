@@ -36,6 +36,10 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-taglibs'		// Security 태그 라이브러리implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 }
 
+bootJar {
+	bootJar.enabled = false
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

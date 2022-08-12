@@ -26,10 +26,11 @@ public class UserService {
         return -1;*/
     }
 
-    @Transactional(readOnly = true) // Select할 때 트랜잭션 시작, 서비스 종료시 트랜잭션 종료 (정합성)
+    //전통 로그인 방식
+    /*@Transactional(readOnly = true) // Select할 때 트랜잭션 시작, 서비스 종료시 트랜잭션 종료 (정합성)
     public User 로그인(User user){
         return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-    }
+    }*/
 
 
 }

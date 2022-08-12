@@ -18,7 +18,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user){
         System.out.println("UserApiController 호출됨");
         // 실제로 DB에 insert에 들어감
@@ -28,6 +28,8 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); // 자바 오브젝트를 json으로 변경 jackson
     }
 
+    
+    // 전통 로그인 방식
     /*@PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         System.out.println("UserApiController 호출됨");
