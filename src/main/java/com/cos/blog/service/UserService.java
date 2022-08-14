@@ -18,6 +18,7 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+
     @Transactional
     public void 회원수정(User user){
         // 수정 시에는 영속성 컨텍스트 User 오브젝트를 영속화시키고, 영속화된 User 오브젝트를 수정
@@ -30,6 +31,7 @@ public class UserService {
         String encPassword = encoder.encode(rawPassword);
         persistence.setPassword(encPassword);
         persistence.setEmail(user.getEmail());
+
         // 회원 수정 종료시 = 서비스 종료 = 트랜잭션 종료 = commit이 자동.
         // 영속화된 persistence 객체의 변화가 감지되면 더티체킹이 되어 update문을 날려줌.
     }
