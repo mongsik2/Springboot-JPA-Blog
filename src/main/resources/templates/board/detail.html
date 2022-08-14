@@ -14,19 +14,32 @@
 
     <div class="container">
 
-        <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-        <button id="btn-update" class="btn btn-warning">수정</button>
-        <button id="btn-delete" class="btn btn-danger">삭제</button>
-        <br>
-        <br>
+        <div th:unless="${board.getUser().username == #authentication.name}">
+            <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+        </div>
 
-        <div class="form-group">
+        <div th:if="${board.getUser().username == #authentication.name}">
+            <button id="btn-update" class="btn btn-warning">수정</button>
+            <button id="btn-delete" class="btn btn-danger">삭제</button>
+        </div>
+        <br/>
+        <br/>
+
+        <div>
+            작성자 : <span><i th:text="${board.getUser().getUsername()}"></i></span><br>
+            작성날짜 : <span th:text="${board.getCreateDate()}"></span>
+            글번호 : <span th:id="id"><i th:text="${board.id}"></i></span><br>
+            조회수 : <span th:text="${board.count}"></span><br>
+        </div>
+        <br/>
+
+        <div>
             <h3 th:text="${board.title}"></h3>
         </div>
         <hr>
 
         <!--   th:utext 를 사용해야 DB안에 html태그까지 모두 적용함    -->
-        <div class="form-group">
+        <div>
             <div th:utext="${board.content}"></div>
         </div>
         <hr>
