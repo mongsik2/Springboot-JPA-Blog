@@ -16,10 +16,13 @@
 
         <div th:unless="${board.getUser().username == #authentication.name}">
             <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+            <br/><br/>
         </div>
 
+
         <div th:if="${board.getUser().username == #authentication.name}">
-            <button id="btn-update" class="btn btn-warning">수정</button>
+            <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+            <a th:href="@{/board/{id}/updateForm(id=${board.id})}" id="btn-update" class="btn btn-warning">수정</a>
             <button id="btn-delete" class="btn btn-danger">삭제</button>
         </div>
         <br/>
