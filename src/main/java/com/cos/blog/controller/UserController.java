@@ -49,7 +49,8 @@ public class UserController {
     }
 
     @GetMapping("/auth/loginForm")
-    public String loginForm() {
+    public String loginForm(Model model) {
+        model.addAttribute("kakao", kakaoApiKey);
         return "user/loginForm";
     }
 
